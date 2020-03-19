@@ -1,0 +1,26 @@
+# 给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。
+# 你可以假设每个输入只对应一种答案，且同样的元素不能被重复利用。
+# 示例：
+# 给定 nums = [2, 7, 11, 15], target = 9
+# 因为 nums[0] + nums[1] = 2 + 7 = 9
+# 所以返回 [0, 1]
+
+
+class Solution(object):
+
+    def __init__(self, num_list, target):
+        self.num_list = num_list
+        self.target = target
+
+    def two_sum(self):
+        for num_one in self.num_list:
+            # 判断：
+            # 1.正难则反，target - num_one 是否在 num_list中
+            # 2.第一个数和第二个数，不能相同
+            if self.target - num_one in self.num_list and num_one is not self.target - num_one:
+                return [self.num_list.index(num_one), self.num_list.index(self.target - num_one)]
+
+
+if __name__ == "__main__":
+    s = Solution([2, 7, 14, 15], target=29)
+    print(s.two_sum())
